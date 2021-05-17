@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  max-width: 768px;
+  margin: auto;
+  padding: 32px 16px;
+}
+
+.edit-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1 1 320px;
+}
+
+.span-2 {
+  flex-basis: 100%;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.submit-button-container {
+  display: inline-block;
+  position: relative;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

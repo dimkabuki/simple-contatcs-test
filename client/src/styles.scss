@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+app-root {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  min-width: 320px;
+  font-size: 10px;
+  overflow-x: hidden;
+}
+
+body {
+  color: #333;
+  background-color: #fafafa;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 1.6rem;
+  overflow: hidden;
+  font-style: normal;
+  font-weight: normal;
+}
+
+app-root {
+  display: block;
+}
+
+/* Utils */
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+$sizes: 0 8 10 16 32;
+$sides: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+
+@each $short, $side in $sides {
+  @each $size in $sizes {
+    .p#{$short}-#{$size} {
+      padding-#{$side}: #{$size}px;
+    }
+    .m#{$short}-#{$size} {
+      margin-#{$side}: #{$size}px;
+    }
+  }
+}

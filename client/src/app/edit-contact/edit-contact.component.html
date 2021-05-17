@@ -1,0 +1,95 @@
+<h1>Edit Contact #{{ id }}</h1>
+<form [formGroup]="editForm" (submit)="submit()" class="edit-form">
+  <input formControlName="id" required hidden />
+  <mat-form-field class="col" appearance="outline">
+    <mat-label> First Name </mat-label>
+    <input matInput formControlName="firstName" required />
+    <mat-error
+      *ngIf="
+        editForm.controls.firstName.touched &&
+        editForm.controls.firstName.invalid
+      "
+    >
+      <span *ngIf="editForm.controls.firstName.errors.required"
+        >First Name is required.</span
+      >
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col" appearance="outline">
+    <mat-label> Last Name </mat-label>
+    <input matInput formControlName="lastName" required />
+    <mat-error
+      *ngIf="
+        editForm.controls.lastName.touched && editForm.controls.lastName.invalid
+      "
+    >
+      <span *ngIf="editForm.controls.lastName.errors.required"
+        >Last Name is required.</span
+      >
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col span-2" appearance="outline">
+    <mat-label> Street </mat-label>
+    <input matInput formControlName="street" required />
+    <mat-error
+      *ngIf="
+        editForm.controls.street.touched && editForm.controls.street.invalid
+      "
+    >
+      <span *ngIf="editForm.controls.street.errors.required"
+        >Street is required.</span
+      >
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col" appearance="outline">
+    <mat-label> Zip </mat-label>
+    <input matInput formControlName="zip" required />
+    <mat-error
+      *ngIf="editForm.controls.zip.touched && editForm.controls.zip.invalid"
+    >
+      <span *ngIf="editForm.controls.zip.errors.required"
+        >Zip is required.</span
+      >
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col" appearance="outline">
+    <mat-label> City </mat-label>
+    <input matInput formControlName="city" required />
+    <mat-error
+      *ngIf="editForm.controls.city.touched && editForm.controls.city.invalid"
+    >
+      <span *ngIf="editForm.controls.city.errors.required"
+        >City is required.</span
+      >
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="col" appearance="outline">
+    <mat-label>Country</mat-label>
+    <mat-select formControlName="country">
+      <mat-option *ngFor="let country of countries" [value]="country.id">
+        {{ country.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="contact?.lastUpdatedAt" class="col self-center pl-10">
+    <b>Last Updated At:</b><br /><span aria-label="last updated at date">{{
+      contact.lastUpdatedAt | date: 'medium'
+    }}</span>
+  </div>
+  <div class="col">
+    <div class="submit-button-container">
+      <div class="spinner-container" *ngIf="isLoading">
+        <mat-spinner diameter="24"></mat-spinner>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="editForm.invalid || editForm.pristine || isLoading"
+      >
+        Save
+      </button>
+    </div>
+    <a class="ml-16" routerLink="/contacts">Back to Contacts</a>
+  </div>
+</form>
